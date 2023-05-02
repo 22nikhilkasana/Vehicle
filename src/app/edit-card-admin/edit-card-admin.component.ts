@@ -19,8 +19,6 @@ export class EditCardAdminComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-
     this.actRoute.paramMap.subscribe(params => {
       this.id = params.get('vehicleId');
       alert(this.id);
@@ -32,7 +30,7 @@ export class EditCardAdminComponent implements OnInit {
       vehicleModel: ['', Validators.required],
       vehiclePrice: ['', Validators.required],
       vehicleDescription: ['', Validators.required],
-      vehicleImageUrl: ['', Validators.required]
+      vehicleImageUrl: ['']
     });
   }
 
