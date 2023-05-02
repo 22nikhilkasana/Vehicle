@@ -1,0 +1,44 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar routerLink="/home">Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/home">Home</a>
+      <a mat-list-item routerLink="/adminView">Admin</a>
+      <a mat-list-item routerLink="/adminDetail">Applicant Details</a>
+      <a mat-list-item routerLink="/login">Login</a>
+      <a mat-list-item routerLink="/register">Register</a>
+      
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span routerLink="/home">VehicleApp</span>
+      <div id="icon" class="button-line" fxLayout="row">
+        <button routerLink="/home" mat-icon-button>
+          <mat-icon>home</mat-icon>
+        </button>
+        <button routerLink="/viewCart" mat-icon-button>
+          <mat-icon>shopping_cart</mat-icon>
+        </button>
+        <button routerLink="/adminDetail" mat-icon-button>
+          <mat-icon>account_circle</mat-icon>
+        </button>
+        <button mat-button routerLink="/login">Login</button>
+        
+      </div>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+   <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

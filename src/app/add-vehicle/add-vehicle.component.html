@@ -1,0 +1,72 @@
+<form [formGroup]="vehicleDetailsForm" (ngSubmit)="addVehicleData()">
+    <div class="card">
+        <div class="card-header">
+            <h2>Add Vehicle</h2>
+        </div>
+        <div class="card-body">
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="vehicleId" placeholder="vehicleId" formControlName="vehicleId">
+                <label for="vehicleId">Vehicle ID</label>
+                <div class="text-danger"
+                    *ngIf="vehicleDetailsForm.get('vehicleId')?.invalid && vehicleDetailsForm.get('vehicleId')?.touched">
+                    Vehicle ID is required.
+                </div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="vehicleName" placeholder="vehicleName"
+                    formControlName="vehicleName">
+                <label for="vehicleName">Vehicle Name</label>
+                <div class="text-danger"
+                    *ngIf="vehicleDetailsForm.get('vehicleName')?.invalid && vehicleDetailsForm.get('vehicleName')?.touched">
+                    Vehicle Name is required.
+                </div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="vehicleModel" placeholder="vehicleModel"
+                    formControlName="vehicleModel">
+                <label for="vehicleModel">Vehicle Model</label>
+                <div class="text-danger"
+                    *ngIf="vehicleDetailsForm.get('vehicleModel')?.invalid && vehicleDetailsForm.get('vehicleModel')?.touched">
+                    Vehicle Model is required.
+                </div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="vehiclePrice" placeholder="vehiclePrice"
+                    formControlName="vehiclePrice">
+                <label for="role">Vehicle Price</label>
+                <div class="text-danger"
+                    *ngIf="vehicleDetailsForm.get('vehiclePrice')?.invalid && vehicleDetailsForm.get('vehiclePrice')?.touched">
+                    Vehicle Price is required.
+                </div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="vehicleDescription" placeholder="vehicleDescription"
+                    formControlName="vehicleDescription">
+                <label for="role">Vehicle Description</label>
+                <div class="text-danger"
+                    *ngIf="vehicleDetailsForm.get('vehicleDescription')?.invalid && vehicleDetailsForm.get('vehicleDescription')?.touched">
+                    Vehicle Description is required.
+                </div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="vehicleImageUrl" placeholder="vehicleImageUrl"
+                    formControlName="vehicleImageUrl">
+                <label for="vehicleImageUrl">Image Url</label>
+                <div class="text-danger"
+                    *ngIf="vehicleDetailsForm.get('vehicleImageUrl')?.invalid && vehicleDetailsForm.get('vehicleImageUrl')?.touched">
+                    Image URL is required.
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="vehicleDetailsForm.invalid">Save</button>
+            <button type="button" class="btn btn-primary" (click)="vehicleDetailsForm.reset()">Clear</button>
+            <a routerLink="/adminView" class="btn btn-primary"><<-- Back</a>
+        </div>
+    </div>
+</form>

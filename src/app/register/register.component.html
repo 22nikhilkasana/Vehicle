@@ -1,0 +1,61 @@
+<form [formGroup]="registerForm">
+    <div class="card">
+        <div class="card-header">
+            <h2>Registration</h2>
+        </div>
+        <div class="card-body">
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="name" placeholder="name" formControlName="name">
+                <label for="name">Name</label>
+                <div class="text-danger"
+                    *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
+                    Name is required.
+                </div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="email" placeholder="name@example.com"
+                    formControlName="email">
+                <label for="email">Email address</label>
+                <div class="text-danger"
+                    *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+                    Valid Email address is required.
+                </div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="password" placeholder="Password"
+                    formControlName="password">
+                <label for="password">Password</label>
+                <div class="text-danger"
+                    *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+                    Password is required and should be at least 6 characters.
+                </div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="role" placeholder="role" formControlName="role">
+                <label for="role">Role</label>
+                <div class="text-danger"
+                    *ngIf="registerForm.get('role')?.invalid && registerForm.get('role')?.touched">
+                    Role is required.
+                </div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="address" placeholder="address"
+                    formControlName="address">
+                <label for="floatingPassword">Address</label>
+                <div class="text-danger"
+                    *ngIf="registerForm.get('address')?.invalid && registerForm.get('address')?.touched">
+                    Address is required.
+                </div>
+            </div>
+
+
+            <button type="submit" (click)="registerUser()" class="btn btn-primary" [disabled]="registerForm.invalid">Save</button>
+            <a routerLink="/login" class="btn btn-primary"><<-- Login</a>
+        </div>
+    </div>
+</form>

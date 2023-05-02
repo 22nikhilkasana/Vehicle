@@ -1,0 +1,24 @@
+<form [formGroup]="editForm" >
+    <div class="form-group">
+      <label for="vehicleName">Vehicle Name:</label>
+      <input type="text" class="form-control" id="vehicleName" formControlName="vehicleName" required>
+    </div>
+    <div class="form-group">
+      <label for="vehicleModel">Vehicle Model:</label>
+      <input type="text" class="form-control" id="vehicleModel" formControlName="vehicleModel" required>
+    </div>
+    <div class="form-group">
+      <label for="vehiclePrice">Vehicle Price:</label>
+      <input type="number" class="form-control" id="vehiclePrice" formControlName="vehiclePrice" required>
+    </div>
+    <div class="form-group">
+      <label for="vehicleDescription">Vehicle Description:</label>
+      <textarea class="form-control" id="vehicleDescription" formControlName="vehicleDescription" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="vehicleImageUrl">Vehicle Image URL:</label>
+      <input type="text" class="form-control" id="vehicleImageUrl" formControlName="vehicleImageUrl" required>
+    </div>
+    <button (click)="editVehicleData()" class="btn btn-primary">Submit</button>
+  </form>
+  

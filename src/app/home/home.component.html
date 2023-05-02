@@ -1,0 +1,59 @@
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card-container">
+        <div *ngFor="let company of companies">
+          <div *ngFor="let vehicle of company.vehicleDetails">
+            <div class="card mb-4">
+              <img src="{{vehicle.vehicleImageUrl}}" class="card-image" alt="{{vehicle.vehicleName}}">
+              <div class="card-body">
+                <h5 class="card-title">{{vehicle.vehicleName}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{vehicle.vehicleModel}}</h6>
+                <p class="card-text">{{vehicle.vehicleDescription}}</p>
+                <p class="card-price">Price: {{vehicle.vehiclePrice}}</p>
+                <p class="card-company">Company: {{company.companyName}}</p>
+                <button (click)="addVehicleToCart(vehicle)" >Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<!-- <div class="card-container">
+  <div *ngFor="let company of companies">
+  <div *ngFor="let item of cart" class="card">
+    <div class="card-image">
+      <img [src]="item.vehicleImageUrl" alt="Vehicle Image">
+    </div>
+    <div class="card-content">
+      <h2 class="card-title">{{ item.vehicleName }} - {{ item.vehicleModel }}</h2>
+      <p class="card-text">{{ item.vehicleDescription }}</p>
+      <p class="card-price">Price: {{ item.vehiclePrice }}</p>
+      <button class="btn btn-danger" (click)="deleteCartItem(item.cartItemId)">Delete</button>
+    </div>
+  </div>
+    </div>
+
+</div> -->
+
+
+<div class="card-container">
+  <div *ngFor="let company of companies">
+    <div *ngFor="let vehicle of company.vehicleDetails">
+      <div class="card mb-4">
+        <img src="{{vehicle.vehicleImageUrl}}" class="card-image" alt="{{vehicle.vehicleName}}">
+        <div class="card-body">
+          <h5 class="card-title">{{vehicle.vehicleName}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{vehicle.vehicleModel}}</h6>
+          <p class="card-text">{{vehicle.vehicleDescription}}</p>
+          <p class="card-price">Price: {{vehicle.vehiclePrice}}</p>
+          <button (click)="addVehicleToCart(vehicle)" >Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
