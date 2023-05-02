@@ -8,15 +8,8 @@ export class AuthenticationService {
   constructor() { }
 
   private isLogin= false;
- isAdmin:string='';
+ 
   
-  setAdmin(){
-    this.isAdmin="admin";
-  }
-
-  getAdmin(){
-    return this.isAdmin;
-  }
 
 
   login(){
@@ -26,7 +19,7 @@ export class AuthenticationService {
 
   logout(){
     this.isLogin=false;
-    alert(this.isLogin);
+    
   }
 
   loginStatus():boolean{

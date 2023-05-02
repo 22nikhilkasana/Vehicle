@@ -12,17 +12,17 @@ import { ViewCartComponent } from './view-cart/view-cart.component';
 import { AuthGuard } from './Auth/auth.guard';
 import { DeactivateGuard } from './Auth/deactivate.guard';
 import { EditCardAdminComponent } from './edit-card-admin/edit-card-admin.component';
-import { AdminAuthGuard } from './Auth/admin-auth.guard';
 
 
 const routes: Routes = [
 
+
   { path: '', redirectTo: '/login', pathMatch: 'full' },        
   { path: "login", component: LoginComponent },
-  { path: "vehicle", component: VehicleViewComponent },
+  { path: "vehicle", component: VehicleViewComponent,canActivate:[AuthGuard]},
   { path: "adminView", component: AdminViewComponent,canActivate:[AuthGuard] },       
   { path: "home", component: HomeComponent ,canActivate:[AuthGuard]},
-  { path: "addVehicle", component: AddVehicleComponent },
+  { path: "addVehicle", component: AddVehicleComponent,canActivate:[AuthGuard]},
   { path: "adminDetail", component: AdminDetailsComponent, canActivate:[AuthGuard] },
   { path: "register", component: RegisterComponent, canDeactivate:[DeactivateGuard]},
   { path: "viewCart", component: ViewCartComponent, canActivate:[AuthGuard] },
