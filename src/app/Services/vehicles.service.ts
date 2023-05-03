@@ -44,9 +44,10 @@ export class VehiclesService {
       'Content-Type': 'application/json'
     });
   
+    alert("service is working");
     let updateOptions = { headers: httpHeader };
     return this.httpClient.put(this.baseUrlVehicles + "updateExistedVehicleDetail/" + vehicleId, updatedVehicle, updateOptions);
   }
 
-
+                    // http://localhost:3333/api/vehicle/v1/updateExistedVehicleDetail/{id}
 }

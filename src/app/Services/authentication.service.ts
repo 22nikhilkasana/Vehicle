@@ -14,7 +14,7 @@ export class AuthenticationService {
 
   login(){
     this.isLogin=true;
-    alert(this.isLogin);
+   
   }
 
   logout(){

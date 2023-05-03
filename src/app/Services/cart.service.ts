@@ -11,14 +11,15 @@ export class CartService {
 
   
 
-  baseUrl:string="http://localhost:4444/api/cart/v1/"
+  //http://localhost:5555/api/cart/v1/addVehicleCart
+  baseUrl:string="http://localhost:5555/api/cart/v1/"
 
   addToCart(cartItems:CartItem){
     let httpHeader = new HttpHeaders({
       'Authorization': 'Bearer ' + localStorage.getItem('jwt')
     });
     let requestOptions = { headers: httpHeader };
-    return  this.httpClient.post(this.baseUrl+"addVehicleToCart",cartItems,requestOptions);
+    return  this.httpClient.put("http://localhost:5555/api/cart/v1/addVehicleCart",cartItems,requestOptions);
   }
 
 

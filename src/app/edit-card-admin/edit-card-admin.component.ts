@@ -17,6 +17,8 @@ export class EditCardAdminComponent implements OnInit {
 
   editForm: any;
 
+  rep:any;
+
   ngOnInit(): void {
 
     this.actRoute.paramMap.subscribe(params => {
@@ -30,7 +32,7 @@ export class EditCardAdminComponent implements OnInit {
       vehicleModel: ['', Validators.required],
       vehiclePrice: ['', Validators.required],
       vehicleDescription: ['', Validators.required],
-      vehicleImageUrl: ['']
+      vehicleImageUrl: ['', Validators.required]
     });
   }
 
@@ -39,13 +41,15 @@ export class EditCardAdminComponent implements OnInit {
     this.vehiclesService.updateVehicleByAdmin(this.id, this.editForm.value)
       .subscribe(
         data => {
-          alert("subscribe methdo working");
+          alert("response method is working");
+          this.rep=data;
+          console.log(this.rep);
           alert("Vehicle updated successfully !!");
           this.router.navigate(['/home']);   //this functionality have to changhe
         },
         error => {
           console.error(error)
-          alert("error methdo working");
+          alert("error method working");
         }
       );
   }

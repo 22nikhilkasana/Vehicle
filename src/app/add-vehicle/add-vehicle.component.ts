@@ -18,7 +18,7 @@ export class AddVehicleComponent {
 
   vehicleDetailsForm = new FormGroup({
     "vehicleId": new FormControl('', [Validators.required]),
-    "vehicleName": new FormControl('', [Validators.required]),
+    "vehicleName": new FormControl('', [Validators.required, Validators.minLength(4)]),
     "vehicleDescription": new FormControl('', [Validators.required]),
     "vehicleModel": new FormControl('', [Validators.required]),
     "vehiclePrice": new FormControl('', [Validators.required]),

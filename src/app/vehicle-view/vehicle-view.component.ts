@@ -28,19 +28,19 @@ export class VehicleViewComponent implements OnInit{
     )
   }
 
- 
-  deleteCard(cardId:number){
-    alert(cardId);
-    this.vehicleService.deleteVehicleByAdmin(cardId).subscribe(
-      response=>{
+  
+    deleteCard(cardId:number){
+      alert(cardId);
+      this.vehicleService.deleteVehicleByAdmin(cardId).subscribe(
+        response=>{
 
-        this.notifier.showNotifications("card has been deleted !!", "OK")
-        
-      },error=>{
-        this.notifier.showNotifications("selected card is not deleted !!", "OK")
-      }
-    )
-  }
+          this.notifier.showNotifications("card has been deleted !!", "OK")
+          
+        },error=>{
+          this.notifier.showNotifications("selected card is not deleted !!", "OK")
+        }
+      )
+    }
 
   
 }
