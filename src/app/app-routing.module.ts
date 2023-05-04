@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: "adminDetail", component: AdminDetailsComponent, canActivate:[AuthGuard] },
   { path: "register", component: RegisterComponent, canDeactivate:[DeactivateGuard]},
   { path: "viewCart", component: ViewCartComponent, canActivate:[AuthGuard] },
-  { path: "editCardByAdmin/:vehicleId", component: EditCardAdminComponent},
+  { path: "editCardByAdmin/:vehicleId", component: EditCardAdminComponent, canActivate:[AuthGuard]},
   { path: '**', component: PageNotFoundComponent }
 ];
 

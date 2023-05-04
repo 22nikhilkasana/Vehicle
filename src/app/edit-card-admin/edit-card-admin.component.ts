@@ -32,16 +32,15 @@ export class EditCardAdminComponent implements OnInit {
       vehicleModel: ['', Validators.required],
       vehiclePrice: ['', Validators.required],
       vehicleDescription: ['', Validators.required],
-      vehicleImageUrl: ['', Validators.required]
+      vehicleImageUrl: ['']
     });
   }
 
   onSubmit() {
-    alert("methdo working");
+    
     this.vehiclesService.updateVehicleByAdmin(this.id, this.editForm.value)
       .subscribe(
         data => {
-          alert("response method is working");
           this.rep=data;
           console.log(this.rep);
           alert("Vehicle updated successfully !!");

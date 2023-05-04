@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../Services/cart.service';
-import { CartItem } from '../Model/Cart';
+import { VehicleCartItem } from '../Model/Cart';
 import { NotifierService } from '../Services/notifier.service';
 
 @Component({
@@ -11,11 +11,11 @@ import { NotifierService } from '../Services/notifier.service';
 export class ViewCartComponent implements OnInit{
 
   totalAmount: any;
-  cart:CartItem[]=[];
+  cart:VehicleCartItem[]=[];
   constructor(private cartService:CartService, private notifier:NotifierService){}
   ngOnInit(): void {
     this.viewAllCarts();
-    this.getCartItemAmount();
+   
   }
 
   viewAllCarts(){
@@ -39,25 +39,10 @@ export class ViewCartComponent implements OnInit{
       response=>{
         this.notifier.showNotifications("card has been deleted !!", "OK")
         this.viewAllCarts();
-        this.getCartItemAmount();
       },error=>{
         this.notifier.showNotifications("selected card is not deleted !!", "OK")
       }
     )
   }
 
-  getCartItemAmount(){
-    this.cartService.totalAmountOfCartItems().subscribe(
-      response=>{
-        this.totalAmount=response
-        this.notifier.showNotifications("The total amount has been displayed !!", "OK")
-      },error=>{
-        this.notifier.showNotifications("The total amount not displayed !!", "OK")
-      }
-    )
-  }
-
-  orderItem(){
-    alert(" your order has been accepted succesfully and the payable amount is -  "+ this.totalAmount)
-  }
 }

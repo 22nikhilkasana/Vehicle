@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CartItem } from '../Model/Cart';
+import { VehicleCartItem } from '../Model/Cart';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class CartService {
   //http://localhost:5555/api/cart/v1/addVehicleCart
   baseUrl:string="http://localhost:5555/api/cart/v1/"
 
-  addToCart(cartItems:CartItem){
+  addToCart(cartItems:VehicleCartItem){
     let httpHeader = new HttpHeaders({
       'Authorization': 'Bearer ' + localStorage.getItem('jwt')
     });
@@ -30,26 +30,18 @@ export class CartService {
     });
     
     let options = { headers: httpHeader };
-    return this.httpClient.get<CartItem[]>(this.baseUrl + "getCartListOfUser", options);
+    return this.httpClient.get<VehicleCartItem[]>("http://localhost:5555/api/cart/v1/getVehicleFromCart", options);
   }
 
-  deleteCartById(cartId:number){
+  deleteCartById(vehicleCartId:number){
     let httpHeader = new HttpHeaders({
       'Authorization': 'Bearer ' + localStorage.getItem('jwt')
     });
     
     let deleteOptions = { headers: httpHeader };
-    return this.httpClient.delete(this.baseUrl + "deleteCartById/"+cartId, deleteOptions);
+    return this.httpClient.delete("http://localhost:5555/api/cart/v1/deleteVehicleFromCart/"+vehicleCartId, deleteOptions);
   }
 
-  totalAmountOfCartItems(){
-    let httpHeader = new HttpHeaders({
-      'Authorization': 'Bearer ' + localStorage.getItem('jwt')
-    });
-    
-    let amountOptions = { headers: httpHeader };
-    return this.httpClient.get(this.baseUrl + "getTotalAmountOfCartItems", amountOptions);
-  }
   
   }
 

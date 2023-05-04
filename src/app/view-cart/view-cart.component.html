@@ -1,22 +1,14 @@
 <div class="card-container">
     <div *ngFor="let item of cart" class="card">
       <div class="card-image">
-        <img [src]="item.vehicleImageUrl" alt="Vehicle Image">
+        <img src="{{item.vehicleImageUrl}}" alt="">
       </div>
       <div class="card-content">
         <h2 class="card-title">{{ item.vehicleName }} - {{ item.vehicleModel }}</h2>
         <p class="card-text">{{ item.vehicleDescription }}</p>
         <p class="card-price">Price: {{ item.vehiclePrice }}</p>
-        <button class="btn btn-danger" (click)="deleteCartItem(item.cartItemId)">Delete</button>
-       
+        <button class="btn btn-danger" (click)="deleteCartItem(item.vehicleCartId)">Delete</button>
       </div>
     </div>
   </div>
-
-
-  <div>
-    <h1>Total Amount of your items :  {{totalAmount}}</h1>
-  </div>
-
-  <button (click)="orderItem()">Order</button>
   

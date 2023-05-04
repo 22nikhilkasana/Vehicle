@@ -31,20 +31,24 @@ export class LoginComponent {
        this.authService.login();
        // store the token in browser storage/local storage
         localStorage.setItem('jwt', this.responseData.Token);
-        this.notfier.showNotifications('login Success !! ', 'OK');
+        
 
          // Retrieve the value of the role from the token
       let token: any = localStorage.getItem('jwt');
       let decodedToken:any = jwt_decode(token);
       
+      let name=decodedToken.name;
+      this.notfier.showNotifications(name +'  login Successfully !! ', 'OK');
      // alert("decode toke is here "+ decodedToken);
       let roleFromtoken = decodedToken.role;
-     
+     console.log(name);
 
       // Navigate to the required page based on the role
       if (roleFromtoken === 'admin') {
         //this.authService.setAdmin();
+        
         this.router.navigateByUrl('/adminView');
+
         
         
       } else {

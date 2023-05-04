@@ -1,7 +1,6 @@
-export class CartItem{
-
-    cartItemId:number;
-    email: string;
+export class VehicleCartItem{
+  
+  vehicleCartId:number;
     vehicleName: string;
     vehicleModel: string;
     vehiclePrice: number;
@@ -9,8 +8,7 @@ export class CartItem{
     vehicleImageUrl:string;
 
     constructor(
-         cartItemId: number,
-         email: string,
+      vehicleCartId:number,
          vehicleName: string,
          vehicleModel: string,
          vehiclePrice: number,
@@ -18,8 +16,7 @@ export class CartItem{
          vehicleImageUrl:string
 
       ) {
-        this.cartItemId=cartItemId;
-        this.email=email;
+        this.vehicleCartId=vehicleCartId
         this.vehicleName=vehicleName;
         this.vehicleModel=vehicleModel;
         this.vehiclePrice=vehiclePrice;

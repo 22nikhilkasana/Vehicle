@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../Services/home.service';
 import { Company } from '../Model/CompanyInfo';
 import { CartService } from '../Services/cart.service';
-import { CartItem } from '../Model/Cart';
+import { VehicleCartItem } from '../Model/Cart';
 import { VehicleDetails } from '../Model/VehicleInfo';
-import jwt_decode from "jwt-decode";
 import { NotifierService } from '../Services/notifier.service';
+import { FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -17,9 +17,12 @@ export class HomeComponent implements OnInit {
   companies?: Company[];
 
   resp: any;
-  email: string = '';
+  formBuilder: any;
   constructor(private homeService: HomeService,private notfier: NotifierService, private cartService: CartService) { }
+
+
   ngOnInit(): void {
+    
     this.getAllCompanyData();
   }
 
@@ -27,11 +30,7 @@ export class HomeComponent implements OnInit {
     this.homeService.viewVehiclesData().subscribe(
       response => {
         this.companies = response;
-        console.log(this.companies)
-        let token: any = localStorage.getItem('jwt');
-        let decodedToken: any = jwt_decode(token);
-        let email1 = decodedToken.email;
-        this.email = email1;
+        console.log(this.companies);
       }, error => {
         this.notfier.showNotifications("all data is not coming", "OK")
       }
@@ -39,25 +38,23 @@ export class HomeComponent implements OnInit {
   }
 
 
-  addVehicleToCart(data: VehicleDetails) {
-    let cartItem = new CartItem(0,
-      this.email,
-      data.vehicleName,
-      data.vehicleModel,
-      data.vehiclePrice,
-      data.vehicleDescription,
-      data.vehicleImageUrl)
-
-    //console.log(this.email);
-
-    this.cartService.addToCart(cartItem).subscribe(
-      response => {
-        this.resp = response;
-        console.log(this.resp);
-        this.notfier.showNotifications("cart added successfully", "OK"); 
-      }, error => {
-        this.notfier.showNotifications("cart not added", "OK")
-      }
-    )
+  
+  addCart(vehicle: VehicleDetails) {
+    const vehicleCartItem: VehicleCartItem = {
+      vehicleCartId: 0,
+      vehicleName: vehicle.vehicleName,
+      vehicleModel: vehicle.vehicleModel,
+      vehiclePrice: vehicle.vehiclePrice,
+      vehicleDescription: vehicle.vehicleDescription,
+      vehicleImageUrl: vehicle.vehicleImageUrl
+    };
+    this.cartService.addToCart(vehicleCartItem).subscribe(response => {
+      console.log(response);
+      alert("Vehicle added to cart successfully");
+    }, 
+    error=>{
+      console.log(error);
+    });
   }
+  
 }
